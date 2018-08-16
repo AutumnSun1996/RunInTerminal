@@ -1,14 +1,16 @@
-# RunInTerminal README
+# RunInTerminal
 
-This is the README for extension "RunInTerminal".
+This extension is a edited version of "Run In Terminal" by kortina.
 
-The extension is a edited version of "Run In Terminal" by kortina.
+Instead of the args in `keybidings`, it only use `setting` for configuration.
+
+I also add `saveBeforeRun` function, and allow multiple commands by `KeepGoing` attribute.
 
 ## Features
 
-Run user defined commands in terminal accoding to filename regex. The default shortcut is "shift+f10", and you can change it in keybindings. 
+Run user defined commands in terminal accoding to filename regex. The default shortcut is `shift+f10`, and you can change it in keybindings.
 
-Allow multi-commands by "KeepGoing" attribute in command setting.
+Allow multiple commands by `KeepGoing` attribute in command setting.
 
 ## Extension Settings
 
