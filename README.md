@@ -32,7 +32,7 @@ Here is an example.
             {
                 "match": "\\.js$",
                 "cmd": "node ${fileBasename}"
-                // if match passed, it will be executed this cmd and exit.
+                // if match passed, this cmd will be executed and then exit.
             },
             {
                 "match": "\\.txt$"
@@ -52,9 +52,9 @@ Then, `RunInTerminal` will check each command defined in `commands`.
 
 For items with `match` attribute, the command will only be excuted when the name of current file matches the regex in `match`.
 
-If name match failed, `RunInTerminal` will go to next command.
+If name match failed, RunInTerminal will go to next command.
 
-And if name match passed or there are no match attribute, `RunInTerminal` will go to next command only if `keepGoing` here is true. Else, it will exit.
+And if name match passed or there are no match attribute, RunInTerminal will go to next command only if `keepGoing` here is true. Else, it will exit.
 
 ## Substitution Tokens
 
@@ -74,7 +74,7 @@ You can use the following substition tokens in cmd strings:
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.1
 
 - Initial release
 
