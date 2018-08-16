@@ -1,0 +1,83 @@
+{
+    "name": "runinterminal",
+    "displayName": "RunInTerminal",
+    "description": "Run user defined commands in terminal accoding to filename regex.",
+    "version": "0.0.1",
+    "publisher": "AutumnSun",
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.RunInTerminal"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.RunInTerminal",
+                "title": "Run In Terminal"
+            }
+        ],
+        "keybindings": [{
+            "command": "extension.RunInTerminal",
+            "key": "shift+f10",
+            "when": "editorTextFocus"
+        }],
+        "configuration": {
+            "title": "Run In Terminal Configuration",
+            "properties": {
+                "RunInTerminal": {
+                    "type": "object",
+                    "properties": {
+                        "saveBeforeRun": {
+                            "type": "boolean",
+                            "description": "save the file before run commands.",
+                            "default": true
+                        },
+                        "commands": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "match": {
+                                        "type": "string",
+                                        "description": "`match` the filename.",
+                                        "default": null
+                                    },
+                                    "cmd": {
+                                        "type": "string",
+                                        "description": "Command to execute.",
+                                        "default": null
+                                    },
+                                    "keepGoing": {
+                                        "type": "boolean",
+                                        "description": "continue to check next command after this command finished.",
+                                        "default": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "eslint": "^4.11.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    },
+    "repository":{
+        "type": "git",
+        "url": ""
+    }
+}
