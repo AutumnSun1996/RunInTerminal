@@ -48,7 +48,6 @@ class Terminal {
             return;
         }
         console.log(`Run In Terminal: Run: ${command}`);
-        Terminal._terminal().show(true);
         Terminal._terminal().sendText(command, true);
     }
     static dispose() {
@@ -122,14 +121,15 @@ function runCommand(editor) {
         // 使用Promise保证文件保存后才开始运行命令
         Promise.resolve(editor.document.save()).then((result)=>{
             console.log("Saved:", result);
-            doRunCommands(commands);
+            doRunCommands(editor, commands);
         });
     } else {
-        doRunCommands(commands);
+        doRunCommands(editor, commands);
     }
 }
-function doRunCommands(commands){
-    var commandEnv = new CommandEnv(vscode.window.activeTextEditor);
+function doRunCommands(editor, commands){
+    var commandEnv = new CommandEnv(editor);
+    Terminal._terminal().show(true);
     for (var command of commands) {
         console.log("Check:", JSON.stringify(command));
         if (commandEnv.accept(command)) {
