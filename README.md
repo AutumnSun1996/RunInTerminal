@@ -76,6 +76,11 @@ You can use the following substition tokens in cmd strings:
 
 ### 1.0.0
 
-Initial release
+- Initial release
+
+### 0.0.2
+
+- Add Function: Scroll to bottom of the terminal before execution of commands.
+
 
 **Enjoy!**
