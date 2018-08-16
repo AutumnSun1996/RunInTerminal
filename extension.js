@@ -119,7 +119,7 @@ function runCommand(editor) {
     if (saveBeforeRun) {
         console.log("SaveAll");
         // 使用Promise保证文件保存后才开始运行命令
-        Promise.resolve(editor.document.save()).then((result)=>{
+        Promise.resolve(editor.document.save()).then((result) => {
             console.log("Saved:", result);
             doRunCommands(editor, commands);
         });
@@ -127,16 +127,19 @@ function runCommand(editor) {
         doRunCommands(editor, commands);
     }
 }
-function doRunCommands(editor, commands){
+function doRunCommands(editor, commands) {
     var commandEnv = new CommandEnv(editor);
     Terminal._terminal().show(true);
-    for (var command of commands) {
-        console.log("Check:", JSON.stringify(command));
-        if (commandEnv.accept(command)) {
-            Terminal.run(commandEnv.build(command.cmd));
-            if (!command.keepGoing) {
-                break;
+    Promise.resolve(vscode.commands.executeCommand("workbench.action.terminal.scrollToBottom")).then((result) => {
+        console.log("scrollToBottom:", result);
+        for (var command of commands) {
+            console.log("Check:", JSON.stringify(command));
+            if (commandEnv.accept(command)) {
+                Terminal.run(commandEnv.build(command.cmd));
+                if (!command.keepGoing) {
+                    break;
+                }
             }
         }
-    }
+    });
 }
