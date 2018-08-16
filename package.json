@@ -2,7 +2,7 @@
     "name": "runinterminal",
     "displayName": "RunInTerminal",
     "description": "Run user defined commands in terminal accoding to filename regex.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "AutumnSun",
     "engines": {
         "vscode": "^1.25.0"
